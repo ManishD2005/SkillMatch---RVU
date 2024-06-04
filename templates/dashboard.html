@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: #2f3136;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure navbar stays on top */
+        }
+
+        .container {
+            padding-top: 60px; /* Add padding below the navbar */
+            height: 100vh; /* Make container height 100% of viewport */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .internship-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+        }
+
+        .internships-scroll-container {
+            overflow-y: auto; /* Make the internships grid scrollable */
+            padding: 20px;
+            flex-grow: 1; /* Allow this container to grow and take up remaining space */
+            padding-bottom: 40px; /* Add padding at the bottom to ensure last card is visible */
+        }
+
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .internship-card {
+            background: #2f3136;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .internship-card h3 {
+            color: #F0512A;
+            margin-bottom: 10px;
+        }
+
+        .internship-card p {
+            flex-grow: 1;
+        }
+
+        .internship-card button {
+            background-color: #F0512A;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            color: #FFF;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .internship-card button:hover {
+            background-color: #c04122;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="SkillMatch Logo">
+    </nav>
+    <div class="container">
+        {% if session.get('user_type') == 'student' %}
+        <h2 class="internship-title">Available Internships</h2>
+        <div class="internships-scroll-container">
+            <div class="internships-grid">
+                {% for internship in internships %}
+                <div class="internship-card">
+                    <h3>{{ internship[1] }}</h3>
+                    <p>{{ internship[2] }}</p>
+                    <form method="GET" action="/apply/{{ internship[0] }}">
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if session.get('user_type') == 'teacher' %}
+        <div class="post-internship-container">
+            <h2>Post a New Internship</h2>
+            <form method="POST" action="/post_internship">
+                <input type="text" name="title" placeholder="Internship Title" required>
+                <textarea name="description" placeholder="Internship Description" required></textarea>
+                <button type="submit">Post Internship</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

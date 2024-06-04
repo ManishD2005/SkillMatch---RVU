@@ -1,0 +1,176 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e; /* Darker background */
+    color: #ffffff; /* White text */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100%;
+    padding: 10px 20px; /* Added padding */
+    background-color: #23272a; /* Discord nav background */
+    display: flex;
+    justify-content: flex-start; /* Changed alignment */
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.navbar img {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Take full height of viewport */
+    position: relative; /* Relative positioning to center the child */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../static/background.png') no-repeat center center fixed; /* Background image */
+    background-size: cover;
+    z-index: -1; /* Ensure it is behind other elements */
+}
+
+.login-container, .post-internship-container {
+    background: rgba(47, 49, 54, 0.9); /* Slightly transparent background */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    text-align: center; /* Center align content */
+    z-index: 1; /* Ensure it is above the background image */
+}
+
+.login-logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #F0512A; /* New button color for headings */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"], input[type="password"], input[type="email"], select, textarea {
+    width: calc(100% - 22px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #555; /* Darker border */
+    border-radius: 4px;
+    background-color: #3a3f45; /* Darker input background */
+    color: #ddd; /* Input text color */
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+    border-color: #F0512A; /* Border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    background-color: #F0512A; /* Updated button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #c04122; /* Darker shade for hover effect */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #2f3136; /* Same as form background */
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    color: #F0512A; /* Updated link color */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbb; /* Light grey */
+}
+
+.internships-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%; /* Ensure the grid takes full width */
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.internship-card {
+    background: #2f3136;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure content is spaced evenly */
+}
+
+.internship-card h3 {
+    color: #F0512A;
+    margin-bottom: 10px; /* Add some space below the title */
+}
+
+.internship-card p {
+    flex-grow: 1; /* Allow the description to take available space */
+}
+
+.internship-card button {
+    background-color: #F0512A;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px; /* Add space between description and button */
+}
+
+.internship-card button:hover {
+    background-color: #c04122;
+}

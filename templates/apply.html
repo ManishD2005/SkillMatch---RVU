@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Apply for Internship</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <h2>Apply for Internship</h2>
+            <form method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="skills" placeholder="Your Skills" required>
+                <textarea name="motivation" placeholder="Why do you want this internship?" required></textarea>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

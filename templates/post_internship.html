@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="SkillMatch Logo">
+    </nav>
+    <div class="container">
+        <div class="post-internship-container">
+            <h2>Post a New Internship</h2>
+            <form method="POST" action="/post_internship">
+                <input type="text" name="title" placeholder="Internship Title" required>
+                <textarea name="description" placeholder="Internship Description" required></textarea>
+                <button type="submit">Post Internship</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

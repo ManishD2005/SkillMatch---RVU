@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Available Internships</h2>
+    <ul>
+    {% for internship in internships %}
+        <li>
+            <strong>{{ internship[1] }}</strong><br>
+            {{ internship[2] }}<br>
+            <a href="{{ url_for('apply', internship_id=internship[0]) }}">Apply</a>
+        </li>
+    {% endfor %}
+    </
